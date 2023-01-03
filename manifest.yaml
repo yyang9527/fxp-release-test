@@ -10,7 +10,7 @@ spec:
   storageClassName: ebs-csi-gp3
   resources:
     requests:
-      storage: 10Gi
+      storage: 2Gi
 ---
 # Source: tts-dev-helm/templates/tts-autocoverservices.yaml
 apiVersion: v1
