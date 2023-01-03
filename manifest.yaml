@@ -1,4 +1,18 @@
 ---
+# PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: ebs
+  name: ebs-tts-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ebs-sc
+  resources:
+    requests:
+      storage: 10Gi
+---
 # Source: tts-dev-helm/templates/tts-autocoverservices.yaml
 apiVersion: v1
 kind: ConfigMap
@@ -1531,6 +1545,10 @@ spec:
       labels:
         app: tts-was-clientapi-base-rest
     spec:
+      volumes:
+        - name: ebs-tts-volume
+          persistentVolumeClaim:
+            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-was-clientapi-base-rest
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-was-clientapi-base-rest-7.1-SNAPSHOT-k8s-93
@@ -1540,6 +1558,9 @@ spec:
           envFrom:
             - configMapRef:
                 name: tts-was-clientapi-base-rest-config
+          volumeMounts:
+            - mountPath: /var/logs/ttsdev01/tts-was-clientapi-base-rest
+              name: ebs-tts-volume
       nodeSelector:
         eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
 
