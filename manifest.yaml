@@ -1,0 +1,1545 @@
+---
+# Source: tts-dev-helm/templates/tts-autocoverservices.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-autocoverservices-config
+  labels:
+    app: tts-autocoverservices
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=ACE
+  -Dspring.profiles.active=ttsdev01,solaceCloud,jdbcCloud
+  -DUSE_NEW_TPS=true
+  -XX:MaxMetaspaceSize=512M
+  -XX:+UseG1GC
+  -Xms128M
+  -Xmx512M
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-ccycloud-pmt-adapter.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-ccycloud-pmt-adapter-config
+  labels:
+    app: tts-ccycloud-pmt-adapter
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=PACCC
+  -Dspring.profiles.active=ttsdev01,solaceCloud
+  -XX:MaxMetaspaceSize=128M
+  -XX:+UseG1GC
+  -Xms128M
+  -Xms512M
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-config-info-service.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-config-info-service-config
+  labels:
+    app: tts-config-info-service
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=CIS
+  -Dspring.profiles.active=native
+  -Dspring.cloud.config.server.native.searchLocations=file:///config
+  -DLOG_HOME=/logs
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-manual-ticktrade-adapter.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-manual-ticktrade-adapter-config
+  labels:
+    app: tts-manual-ticktrade-adapter
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=FAMANL
+  -Dspring.profiles.active=ttsdev01,solaceCloud,jdbcCloud
+  -XX:+UseG1GC
+  -Xms512M
+  -Xmx512M
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-market-rate-engine-nextgen.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-market-rate-engine-nextgen-config
+  labels:
+    app: tts-market-rate-engine-nextgen
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=MDE
+  -Dspring.profiles.active=ttsdev01,solaceCloud
+  -DUSE_NEW_TPS=true
+  -DuseTPS=true
+  -Djava.util.prefs.systemRoot=./config/.java
+  -Djava.util.prefs.userRoot=./config/.java/.userPrefs
+  -XX:+UnlockExperimentalVMOptions
+  -Dinjection.debug=true -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=16171 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false
+  -XX:+UseZGC
+  -Xms1024M
+  -Xmx1024M
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-marketview-service.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-marketview-service-config
+  labels:
+    app: tts-marketview-service
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=MVS
+  -Dspring.profiles.active=ttsdev01,solaceCloud,jdbcCloud
+  -XX:+CMSClassUnloadingEnabled
+  -XX:+UseG1GC
+  -Xms128M
+  -Xmx1024M
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-monitor-service.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-monitor-service-config
+  labels:
+    app: tts-monitor-service
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=MNT
+  -Dspring.profiles.active=ttsdev01,tradeIdGenerator
+  -Dserver.port=9115
+  -Dspring.config.additional-location=/config/jmsWlsConfig.properties
+  -XX:MaxMetaspaceSize=128M
+  -DSKIP_CAPTURE_RATE=Y
+  -Dinjection.debug=true -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=16171 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false
+  -XX:+UseG1GC
+  -Xms512M
+  -Xmx1024M
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  -Dmanagement.security.enabled=false
+  -Dcom.sun.management.jmxremote.port=11668
+  "
+---
+# Source: tts-dev-helm/templates/tts-position-mgmt-service.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-position-mgmt-service-config
+  labels:
+    app: tts-position-mgmt-service
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=PMS
+  -Dspring.profiles.active=ttsdev01,solaceCloud,jdbcCloud
+  -XX:MaxMetaspaceSize=128M
+  -DcoreRates=false
+  -DRESTART.COUNT=5
+  -XX:+UseG1GC
+  -Xms128M
+  -Xms512M
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-rate-engine-core2.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-rate-engine-core2-config
+  labels:
+    app: tts-rate-engine-core2
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=CRE
+  -Dspring.profiles.active=ttsdev01,solaceCloud,jdbcCloud
+  -XX:+UseG1GC
+  -Xms128M
+  -Xmx1024M
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-rate-engine-monitor.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-rate-engine-monitor-config
+  labels:
+    app: tts-rate-engine-monitor
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=REM
+  -Dspring.profiles.active=ttsdev01,solaceCloud,jdbcCloud
+  -XX:+UseG1GC
+  -Xms128M
+  -Xmx512M
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-rate-engine-sales.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-rate-engine-sales-config
+  labels:
+    app: tts-rate-engine-sales
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=SRE
+  -Dspring.profiles.active=ttsdev01,solaceCloud,jdbcCloud
+  -XX:+UseG1GC
+  -Xms128M
+  -Xmx1024M
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-restingorder-mgmt-service.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-restingorder-mgmt-service-config
+  labels:
+    app: tts-restingorder-mgmt-service
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=ROE
+  -Dspring.profiles.active=ttsdev01,solaceCloud,jdbcCloud
+  -XX:+UseG1GC
+  -Xms128M
+  -Xmx1024M
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-risk-management-service.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-risk-management-service-config
+  labels:
+    app: tts-risk-management-service
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=RMS
+  -Dspring.profiles.active=ttsdev01,solaceCloud,jdbcCloud
+  -DcoreRates=false
+  -XX:+UseG1GC
+  -Xms128M
+  -Xmx1024M
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-trans-payment-router-service.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-trans-payment-router-service-config
+  labels:
+    app: tts-trans-payment-router-service
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=PRS
+  -Dspring.profiles.active=ttsdev01,solaceCloud,jdbcCloud
+  -XX:MaxMetaspaceSize=128M
+  -XX:+UseG1GC
+  -Xms128M
+  -Xms512M
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-trans-router-service.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-trans-router-service-config
+  labels:
+    app: tts-trans-router-service
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=TRS
+  -Dspring.profiles.active=ttsdev01,solaceCloud,jdbcCloud
+  -XX:+UseG1GC
+  -Xms128M
+  -Xms512M
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-virtual-trader-engine.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-virtual-trader-engine-config
+  labels:
+    app: tts-virtual-trader-engine
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=VTE
+  -Dspring.profiles.active=ttsdev01,solaceCloud,jdbcCloud
+  -XX:+UseG1GC
+  -Xms128M
+  -Xmx512M
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-was-admin-web.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-was-admin-web-config
+  labels:
+    app: tts-was-admin-web
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=AWCM
+  -Dserver.servlet.context-path=/admin-web
+  -Dspring.profiles.active=ttsdev01,standard
+  -Dserver.port=6277
+  -Dhttp.port=6283
+  -Dspring.resources.static-locations=classpath:/base
+  -Xms128M
+  -Xmx512M
+  -Dmanagement.endpoints.web.exposure.include=*
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-was-admin.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-was-admin-config
+  labels:
+    app: tts-was-admin
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=MCM
+  -Dserver.servlet.context-path=/tts-was-admin
+  -Dspring.profiles.active=ttsdev01,standard
+  -Dserver.port=6271
+  -Xms128M
+  -Xmx512M
+  -Dmanagement.endpoints.web.exposure.include=*
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-was-bank-branch.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-was-bank-branch-config
+  labels:
+    app: tts-was-bank-branch
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=CPCM-BTTS
+  -Dserver.servlet.context-path=/branch-web
+  -Dspring.profiles.active=ttsdev01,standard,tradeIdGenerator
+  -Dserver.port=6278
+  -Dhttp.port=6279
+  -Dspring.resources.static-locations=classpath:/base
+  -Xms512M
+  -Xmx1024M
+  -Dmanagement.endpoints.web.exposure.include=*
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-was-bank.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-was-bank-config
+  labels:
+    app: tts-was-bank
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=KCM
+  -Dserver.servlet.context-path=/tts-was-bank
+  -Dspring.profiles.active=ttsdev01,standard,tradeIdGenerator
+  -Dserver.port=6272
+  -Xms2048M
+  -Xmx2048M
+  -Dmanagement.endpoints.web.exposure.include=*
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-was-client-payment.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-was-client-payment-config
+  labels:
+    app: tts-was-client-payment
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=CPCM
+  -Dserver.servlet.context-path=/client-web
+  -Dspring.profiles.active=ttsdev01,standard,tradeIdGenerator
+  -Dserver.port=6273
+  -Dspring.resources.static-locations=classpath:/base
+  -Xms512M
+  -Xmx2048M
+  -Dmanagement.endpoints.web.exposure.include=*
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-was-clientapi-base-rest.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tts-was-clientapi-base-rest-config
+  labels:
+    app: tts-was-clientapi-base-rest
+data:
+  TTS_NODE_ID: "11"
+  TTS_ENV: "ttsdev01"
+  JAVA_TOOL_OPTIONS: "
+  -DAPP_NAME=CAPI-TTS
+  -Dserver.servlet.context-path=/ttsapi
+  -Dspring.profiles.active=ttsdev01,standard,tradeIdGenerator
+  -Dserver.port=6276
+  -Xms128M
+  -Xmx512M
+  -Dmanagement.endpoints.web.exposure.include=*
+  -DLOG_HOME=/logs
+  -Dmanagement.security.enabled=false
+  -Dspring.cloud.config.uri=http://tts-config-info-service:6281
+  -Dspring.cloud.config.enabled=true
+  -Dspring.cloud.config.failFast=true
+  -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml -DLOGS_FOLDER=/logs
+  -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
+  "
+---
+# Source: tts-dev-helm/templates/tts-autocoverservices.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-autocoverservices
+  labels:
+    name: tts-autocoverservices
+spec:
+  selector:
+    app: tts-autocoverservices
+  ports:
+    - port: 6666
+  type: ClusterIP
+---
+# Source: tts-dev-helm/templates/tts-ccycloud-pmt-adapter.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-ccycloud-pmt-adapter
+  labels:
+    name: tts-ccycloud-pmt-adapter
+spec:
+  selector:
+    app: tts-ccycloud-pmt-adapter
+  ports:
+    - port: 6666
+  type: ClusterIP
+---
+# Source: tts-dev-helm/templates/tts-config-info-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-config-info-service
+  labels:
+    name: tts-config-info-service
+spec:
+  selector:
+    app: tts-config-info-service
+  ports:
+    - port: 6281
+      targetPort: 6281
+  type: ClusterIP
+---
+# Source: tts-dev-helm/templates/tts-manual-ticktrade-adapter.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-manual-ticktrade-adapter
+  labels:
+    name: tts-manual-ticktrade-adapter
+spec:
+  selector:
+    app: tts-manual-ticktrade-adapter
+  ports:
+    - port: 6666
+  type: ClusterIP
+---
+# Source: tts-dev-helm/templates/tts-market-rate-engine-nextgen.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-market-rate-engine-nextgen
+  labels:
+    name: tts-market-rate-engine-nextgen
+spec:
+  selector:
+    app: tts-market-rate-engine-nextgen
+  ports:
+    - port: 6666
+  type: ClusterIP
+---
+# Source: tts-dev-helm/templates/tts-marketview-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-marketview-service
+  labels:
+    name: tts-marketview-service
+spec:
+  selector:
+    app: tts-marketview-service
+  ports:
+    - port: 6666
+  type: ClusterIP
+---
+# Source: tts-dev-helm/templates/tts-monitor-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-monitor-service
+  labels:
+    name: tts-monitor-service
+spec:
+  selector:
+    app: tts-monitor-service
+  ports:
+    - port: 9115
+  type: ClusterIP
+---
+# Source: tts-dev-helm/templates/tts-position-mgmt-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-position-mgmt-service
+  labels:
+    name: tts-position-mgmt-service
+spec:
+  selector:
+    app: tts-position-mgmt-service
+  ports:
+    - port: 6666
+  type: ClusterIP
+---
+# Source: tts-dev-helm/templates/tts-rate-engine-core2.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-rate-engine-core2
+  labels:
+    name: tts-rate-engine-core2
+spec:
+  selector:
+    app: tts-rate-engine-core2
+  ports:
+    - port: 6666
+  type: ClusterIP
+---
+# Source: tts-dev-helm/templates/tts-rate-engine-monitor.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-rate-engine-monitor
+  labels:
+    name: tts-rate-engine-monitor
+spec:
+  selector:
+    app: tts-rate-engine-monitor
+  ports:
+    - port: 6666
+  type: ClusterIP
+---
+# Source: tts-dev-helm/templates/tts-rate-engine-sales.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-rate-engine-sales
+  labels:
+    name: tts-rate-engine-sales
+spec:
+  selector:
+    app: tts-rate-engine-sales
+  ports:
+    - port: 6666
+  type: ClusterIP
+---
+# Source: tts-dev-helm/templates/tts-restingorder-mgmt-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-restingorder-mgmt-service
+  labels:
+    name: tts-restingorder-mgmt-service
+spec:
+  selector:
+    app: tts-restingorder-mgmt-service
+  ports:
+    - port: 6666
+  type: ClusterIP
+---
+# Source: tts-dev-helm/templates/tts-risk-management-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-risk-management-service
+  labels:
+    name: tts-risk-management-service
+spec:
+  selector:
+    app: tts-risk-management-service
+  ports:
+    - port: 6666
+  type: ClusterIP
+---
+# Source: tts-dev-helm/templates/tts-trans-payment-router-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-trans-payment-router-service
+  labels:
+    name: tts-trans-payment-router-service
+spec:
+  selector:
+    app: tts-trans-payment-router-service
+  ports:
+    - port: 6666
+  type: ClusterIP
+---
+# Source: tts-dev-helm/templates/tts-trans-router-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-trans-router-service
+  labels:
+    name: tts-trans-router-service
+spec:
+  selector:
+    app: tts-trans-router-service
+  ports:
+    - port: 6666
+  type: ClusterIP
+---
+# Source: tts-dev-helm/templates/tts-virtual-trader-engine.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-virtual-trader-engine
+  labels:
+    name: tts-virtual-trader-engine
+spec:
+  selector:
+    app: tts-virtual-trader-engine
+  ports:
+    - port: 6666
+  type: ClusterIP
+---
+# Source: tts-dev-helm/templates/tts-was-admin-web.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-was-admin-web
+  labels:
+    name: tts-was-admin-web
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: external
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+spec:
+  selector:
+    app: tts-was-admin-web
+  ports:
+    - port: 6277
+      name: https-port
+      targetPort: 6277
+    - port: 6283
+      name: http-port
+      targetPort: 6283
+  type: LoadBalancer
+---
+# Source: tts-dev-helm/templates/tts-was-admin.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-was-admin
+  labels:
+    name: tts-was-admin
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: external
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+spec:
+  selector:
+    app: tts-was-admin
+  ports:
+    - port: 6271
+      name: https-port
+      targetPort: 6271
+  type: LoadBalancer
+---
+# Source: tts-dev-helm/templates/tts-was-bank-branch.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-was-bank-branch
+  labels:
+    name: tts-was-bank-branch
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: external
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+spec:
+  selector:
+    app: tts-was-bank-branch
+  ports:
+    - port: 6278
+      name: https-port
+      targetPort: 6278
+    - port: 6279
+      name: http-port
+      targetPort: 6279
+  type: LoadBalancer
+---
+# Source: tts-dev-helm/templates/tts-was-bank.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-was-bank
+  labels:
+    name: tts-was-bank
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: external
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+spec:
+  selector:
+    app: tts-was-bank
+  ports:
+    - port: 6272
+      name: https-port
+      targetPort: 6272
+  type: LoadBalancer
+---
+# Source: tts-dev-helm/templates/tts-was-client-payment.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-was-client-payment
+  labels:
+    name: tts-was-client-payment
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: external
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+spec:
+  selector:
+    app: tts-was-client-payment
+  ports:
+    - port: 6273
+      name: https-port
+      targetPort: 6273
+  type: LoadBalancer
+---
+# Source: tts-dev-helm/templates/tts-was-clientapi-base-rest.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tts-was-clientapi-base-rest
+  labels:
+    name: tts-was-clientapi-base-rest
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: external
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+spec:
+  selector:
+    app: tts-was-clientapi-base-rest
+  ports:
+    - port: 6276
+      name: https-port
+      targetPort: 6276
+  type: LoadBalancer
+---
+# Source: tts-dev-helm/templates/tts-autocoverservices.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-autocoverservices
+  labels:
+    app: tts-autocoverservices
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-autocoverservices
+  template:
+    metadata:
+      labels:
+        app: tts-autocoverservices
+    spec:
+      containers:
+        - name: tts-autocoverservices
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-autocoverservices-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: tts-autocoverservices-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-ccycloud-pmt-adapter.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-ccycloud-pmt-adapter
+  labels:
+    app: tts-ccycloud-pmt-adapter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-ccycloud-pmt-adapter
+  template:
+    metadata:
+      labels:
+        app: tts-ccycloud-pmt-adapter
+    spec:
+      containers:
+        - name: tts-ccycloud-pmt-adapter
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-ccycloud-pmt-adapter-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: tts-ccycloud-pmt-adapter-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-config-info-service.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-config-info-service
+  labels:
+    app: tts-config-info-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: tts-config-info-service
+  template:
+    metadata:
+      labels:
+        app: tts-config-info-service
+    spec:
+      containers:
+        - name: tts-config-info-service
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-config-info-service-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 6281
+          envFrom:
+            - configMapRef:
+                name: tts-config-info-service-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-manual-ticktrade-adapter.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-manual-ticktrade-adapter
+  labels:
+    app: tts-manual-ticktrade-adapter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-manual-ticktrade-adapter
+  template:
+    metadata:
+      labels:
+        app: tts-manual-ticktrade-adapter
+    spec:
+      containers:
+        - name: tts-manual-ticktrade-adapter
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-manual-ticktrade-adapter-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: tts-manual-ticktrade-adapter-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-market-rate-engine-nextgen.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-market-rate-engine-nextgen
+  labels:
+    app: tts-market-rate-engine-nextgen
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-market-rate-engine-nextgen
+  template:
+    metadata:
+      labels:
+        app: tts-market-rate-engine-nextgen
+    spec:
+      containers:
+        - name: tts-market-rate-engine-nextgen
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-market-rate-engine-nextgen-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: tts-market-rate-engine-nextgen-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-marketview-service.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-marketview-service
+  labels:
+    app: tts-marketview-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-marketview-service
+  template:
+    metadata:
+      labels:
+        app: tts-marketview-service
+    spec:
+      containers:
+        - name: tts-marketview-service
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-marketview-service-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: tts-marketview-service-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-monitor-service.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-monitor-service
+  labels:
+    app: tts-monitor-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-monitor-service
+  template:
+    metadata:
+      labels:
+        app: tts-monitor-service
+    spec:
+      containers:
+        - name: tts-monitor-service
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-monitor-service-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: tts-monitor-service-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-position-mgmt-service.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-position-mgmt-service
+  labels:
+    app: tts-position-mgmt-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-position-mgmt-service
+  template:
+    metadata:
+      labels:
+        app: tts-position-mgmt-service
+    spec:
+      containers:
+        - name: tts-position-mgmt-service
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-position-mgmt-service-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: tts-position-mgmt-service-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-rate-engine-core2.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-rate-engine-core2
+  labels:
+    app: tts-rate-engine-core2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-rate-engine-core2
+  template:
+    metadata:
+      labels:
+        app: tts-rate-engine-core2
+    spec:
+      containers:
+        - name: tts-rate-engine-core2
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-rate-engine-core2-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: tts-rate-engine-core2-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-rate-engine-monitor.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-rate-engine-monitor
+  labels:
+    app: tts-rate-engine-monitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-rate-engine-monitor
+  template:
+    metadata:
+      labels:
+        app: tts-rate-engine-monitor
+    spec:
+      containers:
+        - name: tts-rate-engine-monitor
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-rate-engine-monitor-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: tts-rate-engine-monitor-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-rate-engine-sales.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-rate-engine-sales
+  labels:
+    app: tts-rate-engine-sales
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-rate-engine-sales
+  template:
+    metadata:
+      labels:
+        app: tts-rate-engine-sales
+    spec:
+      containers:
+        - name: tts-rate-engine-sales
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-rate-engine-sales-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: tts-rate-engine-sales-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-restingorder-mgmt-service.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-restingorder-mgmt-service
+  labels:
+    app: tts-restingorder-mgmt-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-restingorder-mgmt-service
+  template:
+    metadata:
+      labels:
+        app: tts-restingorder-mgmt-service
+    spec:
+      containers:
+        - name: tts-restingorder-mgmt-service
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-restingorder-mgmt-service-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: tts-restingorder-mgmt-service-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-risk-management-service.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-risk-management-service
+  labels:
+    app: tts-risk-management-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-risk-management-service
+  template:
+    metadata:
+      labels:
+        app: tts-risk-management-service
+    spec:
+      containers:
+        - name: tts-risk-management-service
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-risk-management-service-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: tts-risk-management-service-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-trans-payment-router-service.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-trans-payment-router-service
+  labels:
+    app: tts-trans-payment-router-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-trans-payment-router-service
+  template:
+    metadata:
+      labels:
+        app: tts-trans-payment-router-service
+    spec:
+      containers:
+        - name: tts-trans-payment-router-service
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-trans-payment-router-service-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: tts-trans-payment-router-service-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-trans-router-service.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-trans-router-service
+  labels:
+    app: tts-trans-router-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-trans-router-service
+  template:
+    metadata:
+      labels:
+        app: tts-trans-router-service
+    spec:
+      containers:
+        - name: tts-trans-router-service
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-trans-router-service-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: tts-trans-router-service-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-virtual-trader-engine.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-virtual-trader-engine
+  labels:
+    app: tts-virtual-trader-engine
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-virtual-trader-engine
+  template:
+    metadata:
+      labels:
+        app: tts-virtual-trader-engine
+    spec:
+      containers:
+        - name: tts-virtual-trader-engine
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-virtual-trader-engine-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: tts-virtual-trader-engine-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-was-admin-web.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-was-admin-web
+  labels:
+    app: tts-was-admin-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-was-admin-web
+  template:
+    metadata:
+      labels:
+        app: tts-was-admin-web
+    spec:
+      containers:
+        - name: tts-was-admin-web
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-was-admin-web-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 6277
+            - containerPort: 6283
+          envFrom:
+            - configMapRef:
+                name: tts-was-admin-web-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-was-admin.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-was-admin
+  labels:
+    app: tts-was-admin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-was-admin
+  template:
+    metadata:
+      labels:
+        app: tts-was-admin
+    spec:
+      containers:
+        - name: tts-was-admin
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-was-admin-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 6271
+          envFrom:
+            - configMapRef:
+                name: tts-was-admin-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-was-bank-branch.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-was-bank-branch
+  labels:
+    app: tts-was-bank-branch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-was-bank-branch
+  template:
+    metadata:
+      labels:
+        app: tts-was-bank-branch
+    spec:
+      containers:
+        - name: tts-was-bank-branch
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-was-bank-branch-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 6278
+            - containerPort: 6279
+          envFrom:
+            - configMapRef:
+                name: tts-was-bank-branch-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-was-bank.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-was-bank
+  labels:
+    app: tts-was-bank
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-was-bank
+  template:
+    metadata:
+      labels:
+        app: tts-was-bank
+    spec:
+      containers:
+        - name: tts-was-bank
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-was-bank-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 6272
+          envFrom:
+            - configMapRef:
+                name: tts-was-bank-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-was-client-payment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-was-client-payment
+  labels:
+    app: tts-was-client-payment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-was-client-payment
+  template:
+    metadata:
+      labels:
+        app: tts-was-client-payment
+    spec:
+      containers:
+        - name: tts-was-client-payment
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-was-client-payment-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 6273
+          envFrom:
+            - configMapRef:
+                name: tts-was-client-payment-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+---
+# Source: tts-dev-helm/templates/tts-was-clientapi-base-rest.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts-was-clientapi-base-rest
+  labels:
+    app: tts-was-clientapi-base-rest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tts-was-clientapi-base-rest
+  template:
+    metadata:
+      labels:
+        app: tts-was-clientapi-base-rest
+    spec:
+      containers:
+        - name: tts-was-clientapi-base-rest
+          image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-was-clientapi-base-rest-7.1-SNAPSHOT-k8s-93
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 6276
+          envFrom:
+            - configMapRef:
+                name: tts-was-clientapi-base-rest-config
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: FXP-dev-ngrp-appscv-20221215224043535800000001
+
