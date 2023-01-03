@@ -1009,7 +1009,7 @@ metadata:
   labels:
     app: tts-config-info-service
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: tts-config-info-service
