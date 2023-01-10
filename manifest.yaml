@@ -20,7 +20,7 @@ data:
   -DLOG_HOME=/var/logs/ttsdev01/tts-autocoverservices
   -DLOGS_FOLDER=/var/logs/ttsdev01/tts-autocoverservices
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -47,7 +47,7 @@ data:
   -DLOG_HOME=/var/logs/ttsdev01/tts-ccycloud-pmt-adapter
   -DLOGS_FOLDER=/var/logs/ttsdev01/tts-ccycloud-pmt-adapter
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -92,7 +92,7 @@ data:
   -DLOG_HOME=/var/logs/ttsdev01/tts-manual-ticktrade-adapter
   -DLOGS_FOLDER=/var/logs/ttsdev01/tts-manual-ticktrade-adapter
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -124,7 +124,7 @@ data:
   -DLOG_HOME=/var/logs/ttsdev01/tts-market-rate-engine-nextgen
   -DLOGS_FOLDER=/var/logs/ttsdev01/tts-market-rate-engine-nextgen
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -151,7 +151,7 @@ data:
   -DLOG_HOME=/var/logs/ttsdev01/tts-marketview-service
   -DLOGS_FOLDER=/var/logs/ttsdev01/tts-marketview-service
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -182,7 +182,7 @@ data:
   -DLOG_HOME=/var/logs/ttsdev01/tts-monitor-service
   -DLOGS_FOLDER=/var/logs/ttsdev01/tts-monitor-service
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -213,7 +213,7 @@ data:
   -DLOG_HOME=/var/logs/ttsdev01/tts-position-mgmt-service
   -DLOGS_FOLDER=/var/logs/ttsdev01/tts-position-mgmt-service
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -239,7 +239,7 @@ data:
   -DLOG_HOME=/var/logs/ttsdev01/tts-rate-engine-core2
   -DLOGS_FOLDER=/var/logs/ttsdev01/tts-rate-engine-core2
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -265,7 +265,7 @@ data:
   -DLOG_HOME=/var/logs/ttsdev01/tts-rate-engine-monitor
   -DLOGS_FOLDER=/var/logs/ttsdev01/tts-rate-engine-monitor
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -290,7 +290,7 @@ data:
   -Xmx1024M
   -DLOG_HOME=/var/logs/ttsdev01/SRE
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -316,7 +316,7 @@ data:
   -DLOG_HOME=/var/logs/ttsdev01/tts-restingorder-mgmt-service
   -DLOGS_FOLDER=/var/logs/ttsdev01/tts-restingorder-mgmt-service
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -343,7 +343,7 @@ data:
   -DLOG_HOME=/var/logs/ttsdev01/tts-risk-management-service
   -DLOGS_FOLDER=/var/logs/ttsdev01/tts-risk-management-service
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -370,7 +370,7 @@ data:
   -DLOG_HOME=/var/logs/ttsdev01/tts-trans-payment-router-service
   -DLOGS_FOLDER=/var/logs/ttsdev01/tts-trans-payment-router-service
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -404,7 +404,7 @@ data:
   -DLOG_HOME=/var/logs/ttsdev01/tts-trans-persistence-service
   -DLOGS_FOLDER=/var/logs/ttsdev01/tts-trans-persistence-service
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -430,7 +430,7 @@ data:
   -DLOG_HOME=/var/logs/ttsdev01/tts-trans-router-service
   -DLOGS_FOLDER=/var/logs/ttsdev01/tts-trans-router-service
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -456,7 +456,7 @@ data:
   -DLOG_HOME=/var/logs/ttsdev01/tts-virtual-trader-engine
   -DLOGS_FOLDER=/var/logs/ttsdev01/tts-virtual-trader-engine
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -485,7 +485,7 @@ data:
   -Dmanagement.endpoints.web.exposure.include=*
   -DLOG_HOME=/var/logs/ttsdev01/tts-was-admin-web
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -512,7 +512,7 @@ data:
   -Dmanagement.endpoints.web.exposure.include=*
   -DLOG_HOME=/var/logs/ttsdev01/tts-was-admin
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -541,7 +541,7 @@ data:
   -Dmanagement.endpoints.web.exposure.include=*
   -DLOG_HOME=/var/logs/ttsdev01/tts-was-bank-branch
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -568,7 +568,7 @@ data:
   -Dmanagement.endpoints.web.exposure.include=*
   -DLOG_HOME=/var/logs/ttsdev01/tts-was-bank
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -596,7 +596,7 @@ data:
   -Dmanagement.endpoints.web.exposure.include=*
   -DLOG_HOME=/var/logs/ttsdev01/tts-was-client-payment
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -623,7 +623,7 @@ data:
   -Dmanagement.endpoints.web.exposure.include=*
   -DLOG_HOME=/var/logs/ttsdev01/tts-was-clientapi-base-rest
   -Dmanagement.security.enabled=false
-  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-release-dev.svc.cluster.local:6281
+  -Dspring.cloud.config.uri=http://tts-config-info-service.fxp-ebs-testing.svc.cluster.local:6281
   -Dspring.cloud.config.enabled=true
   -Dspring.cloud.config.failFast=true
   -Dlogging.config=/logs/logback.xml -Dlogback.configurationFile=/logs/logback.xml
@@ -1098,19 +1098,19 @@ spec:
       labels:
         app: tts-config-info-service
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
+#      volumes:
+#        - name: ebs-tts-volume
+#          persistentVolumeClaim:
+#            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-config-info-service
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-config-info-service-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
           ports:
             - containerPort: 6281
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-config-info-service
-              name: ebs-tts-volume
+#          volumeMounts:
+#            - mountPath: /var/logs/ttsdev01/tts-config-info-service
+#              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-config-info-service-config
