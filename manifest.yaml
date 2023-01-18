@@ -630,20 +630,6 @@ data:
   -XX:+ExitOnOutOfMemoryError -Dmanagement.security.enabled=false -Xlog:gc*,gc+ref=info,gc+heap=info,gc+age=info:file=/logs/gc.log:tags,uptime,time,level:filecount=10,filesize=100m -Xlog:safepoint*:file=/logs/safepoints.log:tags,uptime,time,level:filecount=10,filesize=100m
   "
 ---
-# Source: tts-dev-helm/templates/tts-pvc.yaml
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
- namespace: 
- name: ebs-tts-pv-claim
-spec:
- accessModes:
-   - ReadWriteOnce
- storageClassName: ebs-csi-io2
- resources:
-   requests:
-     storage: 13Gi
----
 # Source: tts-dev-helm/templates/tts-autocoverservices.yaml
 apiVersion: v1
 kind: Service
@@ -1034,10 +1020,6 @@ spec:
       labels:
         app: tts-autocoverservices
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-autocoverservices
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-autocoverservices-7.1-SNAPSHOT-k8s-93
@@ -1066,10 +1048,6 @@ spec:
       labels:
         app: tts-ccycloud-pmt-adapter
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-ccycloud-pmt-adapter
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-ccycloud-pmt-adapter-7.1-SNAPSHOT-k8s-93
@@ -1098,19 +1076,12 @@ spec:
       labels:
         app: tts-config-info-service
     spec:
-#      volumes:
-#        - name: ebs-tts-volume
-#          persistentVolumeClaim:
-#            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-config-info-service
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-config-info-service-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
           ports:
             - containerPort: 6281
-#          volumeMounts:
-#            - mountPath: /var/logs/ttsdev01/tts-config-info-service
-#              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-config-info-service-config
@@ -1132,17 +1103,10 @@ spec:
       labels:
         app: tts-manual-ticktrade-adapter
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-manual-ticktrade-adapter
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-manual-ticktrade-adapter-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-manual-ticktrade-adapter
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-manual-ticktrade-adapter-config
@@ -1164,17 +1128,10 @@ spec:
       labels:
         app: tts-market-rate-engine-nextgen
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-market-rate-engine-nextgen
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-market-rate-engine-nextgen-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-market-rate-engine-nextgen
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-market-rate-engine-nextgen-config
@@ -1196,17 +1153,10 @@ spec:
       labels:
         app: tts-marketview-service
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-marketview-service
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-marketview-service-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-marketview-service
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-marketview-service-config
@@ -1228,17 +1178,10 @@ spec:
       labels:
         app: tts-monitor-service
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-monitor-service
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-monitor-service-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-monitor-service
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-monitor-service-config
@@ -1260,17 +1203,10 @@ spec:
       labels:
         app: tts-position-mgmt-service
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-position-mgmt-service
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-position-mgmt-service-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-position-mgmt-service
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-position-mgmt-service-config
@@ -1292,17 +1228,10 @@ spec:
       labels:
         app: tts-rate-engine-core2
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-rate-engine-core2
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-rate-engine-core2-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-rate-engine-core2
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-rate-engine-core2-config
@@ -1324,17 +1253,10 @@ spec:
       labels:
         app: tts-rate-engine-monitor
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-rate-engine-monitor
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-rate-engine-monitor-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-rate-engine-monitor
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-rate-engine-monitor-config
@@ -1356,17 +1278,10 @@ spec:
       labels:
         app: tts-rate-engine-sales
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-rate-engine-sales
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-rate-engine-sales-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-rate-engine-sales
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-rate-engine-sales-config
@@ -1388,17 +1303,10 @@ spec:
       labels:
         app: tts-restingorder-mgmt-service
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-restingorder-mgmt-service
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-restingorder-mgmt-service-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-restingorder-mgmt-service
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-restingorder-mgmt-service-config
@@ -1420,17 +1328,10 @@ spec:
       labels:
         app: tts-risk-management-service
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-risk-management-service
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-risk-management-service-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-risk-management-service
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-risk-management-service-config
@@ -1452,17 +1353,10 @@ spec:
       labels:
         app: tts-trans-payment-router-service
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-trans-payment-router-service
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-trans-payment-router-service-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-trans-payment-router-service
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-trans-payment-router-service-config
@@ -1484,10 +1378,6 @@ spec:
       labels:
         app: tts-trans-persistence-service
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-trans-persistence-service
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-trans-persistence-service-7.1-SNAPSHOT-k8s-93
@@ -1496,9 +1386,6 @@ spec:
             - containerPort: 47276
             - containerPort: 47692
             - containerPort: 47693
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-trans-persistence-service
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-trans-persistence-service-config
@@ -1520,17 +1407,10 @@ spec:
       labels:
         app: tts-trans-router-service
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-trans-router-service
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-trans-router-service-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-trans-router-service
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-trans-router-service-config
@@ -1552,17 +1432,10 @@ spec:
       labels:
         app: tts-virtual-trader-engine
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-virtual-trader-engine
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-virtual-trader-engine-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-virtual-trader-engine
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-virtual-trader-engine-config
@@ -1584,10 +1457,6 @@ spec:
       labels:
         app: tts-was-admin-web
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-was-admin-web
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-was-admin-web-7.1-SNAPSHOT-k8s-93
@@ -1595,9 +1464,6 @@ spec:
           ports:
             - containerPort: 6277
             - containerPort: 6283
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-was-admin-web
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-was-admin-web-config
@@ -1619,19 +1485,12 @@ spec:
       labels:
         app: tts-was-admin
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-was-admin
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-was-admin-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
           ports:
             - containerPort: 6271
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-was-admin
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-was-admin-config
@@ -1653,10 +1512,6 @@ spec:
       labels:
         app: tts-was-bank-branch
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-was-bank-branch
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-was-bank-branch-7.1-SNAPSHOT-k8s-93
@@ -1664,9 +1519,6 @@ spec:
           ports:
             - containerPort: 6278
             - containerPort: 6279
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-was-bank-branch
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-was-bank-branch-config
@@ -1688,19 +1540,12 @@ spec:
       labels:
         app: tts-was-bank
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-was-bank
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-was-bank-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
           ports:
             - containerPort: 6272
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-was-bank
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-was-bank-config
@@ -1722,19 +1567,12 @@ spec:
       labels:
         app: tts-was-client-payment
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-was-client-payment
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-was-client-payment-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
           ports:
             - containerPort: 6273
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-was-client-payment
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-was-client-payment-config
@@ -1756,19 +1594,12 @@ spec:
       labels:
         app: tts-was-clientapi-base-rest
     spec:
-      volumes:
-        - name: ebs-tts-volume
-          persistentVolumeClaim:
-            claimName: ebs-tts-pv-claim
       containers:
         - name: tts-was-clientapi-base-rest
           image: 535683913631.dkr.ecr.us-east-1.amazonaws.com/tts_dev:tts-was-clientapi-base-rest-7.1-SNAPSHOT-k8s-93
           imagePullPolicy: Always
           ports:
             - containerPort: 6276
-          volumeMounts:
-            - mountPath: /var/logs/ttsdev01/tts-was-clientapi-base-rest
-              name: ebs-tts-volume
           envFrom:
             - configMapRef:
                 name: tts-was-clientapi-base-rest-config
